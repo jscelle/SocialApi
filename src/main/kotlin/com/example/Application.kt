@@ -10,11 +10,15 @@ import com.example.plugins.*
 import configureNewsRouting
 import io.ktor.server.auth.*
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns
 import kotlin.math.log
 
 fun main() {
-    Database.connect("jdbc:postgresql://localhost:5555/web", driver = "org.postgresql.Driver",
-        user = "postgres", password = "himgaf-2Gozzi-hyhtur"
+    Database.connect(
+        "jdbc:postgresql://db.qvtryvgkycvythghwuwn.supabase.co:5432/postgres?user=postgres&password=WXPAtmouXCKvltDA",
+        driver = "org.postgresql.Driver",
+        user = "postgres",
+        password = "WXPAtmouXCKvltDA"
     )
 
     embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
