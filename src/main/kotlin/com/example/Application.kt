@@ -8,7 +8,11 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import com.example.plugins.*
 import configureNewsRouting
+import io.ktor.http.*
 import io.ktor.server.auth.*
+import io.ktor.server.plugins.cors.*
+import io.ktor.server.plugins.cors.CORS
+import io.ktor.server.plugins.cors.routing.*
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns
 import kotlin.math.log
@@ -34,6 +38,16 @@ fun Application.module() {
     configureNewsRouting()
 
     configureCommentsRouting()
+
+    install(CORS) {
+        allowMethod(HttpMethod.Options)
+        allowMethod(HttpMethod.Put)
+        allowMethod(HttpMethod.Post)
+        allowMethod(HttpMethod.Delete)
+        allowHeader(HttpHeaders.Authorization)
+        allowHeader(HttpHeaders.ContentType)
+        anyHost()
+    }
 
     install(Authentication) {
         val manager = LoginManager()
