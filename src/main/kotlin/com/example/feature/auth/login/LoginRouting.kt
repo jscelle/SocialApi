@@ -9,7 +9,7 @@ fun Application.configureLoginRouting() {
     val manager = LoginManager()
 
     routing {
-        get("/login") {
+        post("/login") {
             manager.signIn(call = call)
         }
     }
