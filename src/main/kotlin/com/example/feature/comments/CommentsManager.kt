@@ -21,12 +21,10 @@ class CommentsManager {
         call.respond(comment)
     }
 
-    suspend fun getComments(call: ApplicationCall) {
-
-        val newsId = call.receive<CommentsGetInput>().newsId
+    suspend fun getComments(id: Int, call: ApplicationCall) {
 
         val comments = Comments
-            .getById(newsId)
+            .getById(id)
             .map {
             CommentsOutput(
                 authorId = it.authorId,

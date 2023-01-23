@@ -10,7 +10,8 @@ fun Application.configureCommentsRouting() {
     routing {
         authenticate("auth-basic") {
             get("/comments/") {
-                manager.getComments(call = call)
+                val id = call.request.queryParameters["id"].toString().toInt()
+                manager.getComments(id = id, call = call)
             }
             post("/comments/") {
                 manager.postComment(call = call)
