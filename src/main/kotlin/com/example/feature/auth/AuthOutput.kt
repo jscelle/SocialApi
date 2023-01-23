@@ -6,5 +6,6 @@ import kotlinx.serialization.Serializable
 data class AuthOutput(
     val login: String,
     val password: String,
-    val id: Int
+    val id: Int,
+    val isAdmin: Boolean
 )

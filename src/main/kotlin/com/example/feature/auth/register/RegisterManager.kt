@@ -36,7 +36,8 @@ class RegisterManager() {
                 AuthOutput(
                     login = newUser.login,
                     password = newUser.password,
-                    id = newUser.id
+                    id = newUser.id,
+                    isAdmin = newUser.isAdmin
                 )
             )
         }

@@ -19,7 +19,8 @@ class LoginManager {
                     AuthOutput(
                         login = it.login,
                         password = it.password,
-                        id = it.id
+                        id = it.id,
+                        isAdmin = it.isAdmin
                     )
                 )
                 return
